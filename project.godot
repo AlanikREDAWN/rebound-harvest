@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Global="*uid://b7itr4d1fi2xc"
 Player="*uid://csvu7xdax8tng"
 
 [display]

@@ -58,7 +58,7 @@ func set_health(value: int):
 		health_changed.emit(difference)
 		
 		if health == 0:
-			health_changed.emit()
+			health_depleted.emit()
 
 func get_health():
 	return health

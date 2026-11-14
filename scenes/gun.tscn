@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dnjewn88hoq1m" path="res://scripts/gun.gd" id="1_og67c"]
 [ext_resource type="Texture2D" uid="uid://4oylay15dlma" path="res://assets/sprites/tools/Detective Gun.png" id="1_x77fm"]
+[ext_resource type="AudioStream" uid="uid://6mlb0evwuj04" path="res://assets/Sounds/Shoot Noise.wav" id="3_gp1hk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k27wv"]
 animations = [{
@@ -32,3 +33,7 @@ sprite_frames = SubResource("SpriteFrames_k27wv")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1023513529]
 position = Vector2(-1, 0)
 shape = SubResource("CircleShape2D_x77fm")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1633086111]
+stream = ExtResource("3_gp1hk")
+metadata/_tc_offline_added = true

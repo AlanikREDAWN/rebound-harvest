@@ -1,0 +1,28 @@
+extends Node
+
+var player_position
+
+signal bullet_direction(direction)
+signal playerHit()
+var player_health
+var death = false
+func _ready() -> void:
+	player_health = Player.find_children("*", "Health")[0]
+
+func _process(delta: float) -> void:
+	
+	if death == false:
+		#player_health = Player.find_children("*", "Health")[0]
+		if player_health.get_health() == 0:
+			death = true
+			var death_timer: Timer = Timer.new()
+			add_child(death_timer)
+			death_timer.wait_time = 1.5
+			death_timer.one_shot = true
+			death_timer.timeout.connect(_death)
+			death_timer.start()
+
+func _death():
+	#Player.queue_free()
+	get_tree().change_scene_to_file("res://scenes/death.tscn")
+	Player.queue_free()

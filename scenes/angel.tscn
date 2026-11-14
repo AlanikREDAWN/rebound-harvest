@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://sksv2yxhofrn"]
+
+[ext_resource type="Script" uid="uid://y4f3trcfd4hy" path="res://scripts/base_enemy.gd" id="1_6gyu6"]
+[ext_resource type="Script" uid="uid://d3ftjo7gectpn" path="res://scripts/health.gd" id="2_whldq"]
+[ext_resource type="Texture2D" uid="uid://cqamct23udeqe" path="res://assets/sprites/enemies/Angel.png" id="3_6gyu6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whldq"]
+atlas = ExtResource("3_6gyu6")
+region = Rect2(0, 0, 32, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oark8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whldq")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qlg0r"]
+radius = 4.807535
+height = 22.504774
+
+[node name="angel" type="CharacterBody2D" unique_id=2118979394]
+script = ExtResource("1_6gyu6")
+metadata/speed = 50.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1572576942]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=866245739 groups=["Enemy"]]
+collision_layer = 4
+metadata/_tc_offline_added = true
+
+[node name="Health" type="Node" parent="CharacterBody2D" unique_id=1820158022]
+script = ExtResource("2_whldq")
+max_health = 2
+metadata/_custom_type_script = "uid://d3ftjo7gectpn"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=636771397]
+position = Vector2(0, -37)
+scale = Vector2(1.0197369, 0.76041657)
+sprite_frames = SubResource("SpriteFrames_oark8")
+metadata/_tc_offline_added = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D" unique_id=601641289 groups=["Enemy"]]
+position = Vector2(0, -28)
+scale = Vector2(2.7040884, 2.488361)
+shape = SubResource("CapsuleShape2D_qlg0r")
+metadata/_tc_offline_added = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1451923046]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=530681280]
+position = Vector2(0, -28)
+scale = Vector2(2.7040884, 2.488361)
+shape = SubResource("CapsuleShape2D_qlg0r")
+metadata/_tc_offline_added = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

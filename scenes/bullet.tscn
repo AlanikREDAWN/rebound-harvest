@@ -18,12 +18,23 @@ animations = [{
 radius = 4.0
 height = 18.0
 
+[sub_resource type="Gradient" id="Gradient_y25gk"]
+offsets = PackedFloat32Array(0, 0.098557696, 0.20913461, 0.31009614, 0.5504808)
+colors = PackedColorArray(1, 1, 0.41960785, 1, 0.39473683, 0.39473683, 0.16563466, 1, 0.27920413, 0.27920413, 0.11715623, 1, 0.21181001, 0.21181001, 0.088877134, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y25gk"]
+gradient = SubResource("Gradient_y25gk")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Bullet" type="Node2D" unique_id=1990885213]
 z_index = 4
 script = ExtResource("1_y25gk")
 metadata/_tc_uuid = "371931805309832850"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=577738228]
+collision_layer = 4
+collision_mask = 4
 metadata/_tc_uuid = "8376213687662543792"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D" unique_id=1541964464]
@@ -38,6 +49,9 @@ metadata/_tc_uuid = "1095505135955780621"
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=709041659]
 metadata/_tc_uuid = "2599937418721695421"
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1756482034]
+texture = SubResource("GradientTexture2D_y25gk")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
