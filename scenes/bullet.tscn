@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cdudf4rap42on"]
+
+[ext_resource type="Texture2D" uid="uid://b51cutsrgyspo" path="res://assets/sprites/projectiles/Detective Bullet.png" id="1_mkf8s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k6jfe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mkf8s")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mkf8s"]
+radius = 4.0
+height = 18.0
+
+[node name="Bullet" type="Node2D" unique_id=1223074498]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=314823265]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D" unique_id=1541964464]
+sprite_frames = SubResource("SpriteFrames_k6jfe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=969184261]
+position = Vector2(0, -2)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_mkf8s")

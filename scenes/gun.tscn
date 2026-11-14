@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://mym5qjyonaf0"]
+
+[ext_resource type="Texture2D" uid="uid://4oylay15dlma" path="res://assets/sprites/tools/Detective Gun.png" id="1_x77fm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k27wv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_x77fm")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x77fm"]
+radius = 11.0
+
+[node name="Gun" type="Node2D" unique_id=838556961]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=325485549]
+collision_layer = 0
+collision_mask = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=1148355043]
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_k27wv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1023513529]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_x77fm")
