@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cdudf4rap42on"]
 
 [ext_resource type="Texture2D" uid="uid://b51cutsrgyspo" path="res://assets/sprites/projectiles/Detective Bullet.png" id="1_mkf8s"]
+[ext_resource type="Script" uid="uid://1e8c5114ulrp" path="res://scripts/bullet.gd" id="1_y25gk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k6jfe"]
 animations = [{
@@ -17,9 +18,10 @@ animations = [{
 radius = 4.0
 height = 18.0
 
-[node name="Bullet" type="Node2D" unique_id=1223074498]
+[node name="Bullet" type="Node2D" unique_id=1990885213]
+script = ExtResource("1_y25gk")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=314823265]
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1326246280]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="RigidBody2D" unique_id=1541964464]
 sprite_frames = SubResource("SpriteFrames_k6jfe")

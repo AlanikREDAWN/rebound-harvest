@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://csvu7xdax8tng"]
 
 [ext_resource type="Texture2D" uid="uid://b0pxefownkvqb" path="res://assets/sprites/player/Simple Detective.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://jbxjivg378wj" path="res://scripts/player.gd" id="1_dqkch"]
 [ext_resource type="Script" uid="uid://dv4wad1yus2gd" path="res://scripts/character_body_2d.gd" id="1_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://mym5qjyonaf0" path="res://scenes/gun.tscn" id="2_g2els"]
 
@@ -20,9 +21,17 @@ radius = 12.0
 height = 34.0
 
 [node name="player" type="Node2D" unique_id=494032075]
+script = ExtResource("1_dqkch")
+
+[node name="Gun" parent="." unique_id=838556961 instance=ExtResource("2_g2els")]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=868614831]
 script = ExtResource("1_qhqgy")
+metadata/_tc_offline_added = true
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=567507159]
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
 metadata/_tc_offline_added = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=5484602]
@@ -33,10 +42,3 @@ metadata/_tc_offline_added = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=925326327]
 position = Vector2(3, -17)
 shape = SubResource("CapsuleShape2D_3vyb7")
-
-[node name="Gun" parent="." unique_id=838556961 instance=ExtResource("2_g2els")]
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=567507159]
-zoom = Vector2(3, 3)
-position_smoothing_enabled = true
-metadata/_tc_offline_added = true

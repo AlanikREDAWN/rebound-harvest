@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://mym5qjyonaf0"]
 
+[ext_resource type="Script" uid="uid://dnjewn88hoq1m" path="res://scripts/gun.gd" id="1_og67c"]
 [ext_resource type="Texture2D" uid="uid://4oylay15dlma" path="res://assets/sprites/tools/Detective Gun.png" id="1_x77fm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k27wv"]
@@ -17,6 +18,7 @@ animations = [{
 radius = 11.0
 
 [node name="Gun" type="Node2D" unique_id=838556961]
+script = ExtResource("1_og67c")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=325485549]
 collision_layer = 0
