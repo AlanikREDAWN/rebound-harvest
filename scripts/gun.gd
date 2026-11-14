@@ -1,21 +1,17 @@
 extends Node2D
 
 @onready var gun: Node2D = $"."
-const bullet = preload("res://scenes/bullet.tscn")
+const REF_BULLET: PackedScene = preload("res://scenes/bullet.tscn")
 
-func shoot():
-	print(bullet)
-	var bullet_instance = bullet.instantiate()
-	#bullet_instance.dir = rotation
-	bullet_instance.spawnPos = global_position
-	bullet_instance.spawnRot = rotation
-	gun.add_child.call_deferred(bullet_instance)
+func shoot_bullet():
+	var bullet = REF_BULLET.instantiate()
+	get_tree().current_scene.add_child(bullet)
+	bullet.global_position = self.global_position
 
-#func _process(delta: float) -> void:
-	#if Input.is_action_just_pressed("shoot"):
-		#shoot()
+	var bullet_rotation = self.global_position.direction_to(get_global_mouse_position()).angle()
+	bullet.rotation = bullet_rotation
 
 func _input(event):
 	if event is InputEventMouseButton:
-		shoot()
-		#print("shoot")
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			shoot_bullet()

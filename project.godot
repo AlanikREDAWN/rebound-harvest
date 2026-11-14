@@ -13,7 +13,11 @@ config_version=5
 config/name="Detective Guy Thing"
 run/main_scene="uid://bwyespjgri0w1"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://assets/sprites/projectiles/icon.svg"
+config/icon="res://icon.svg"
+
+[autoload]
+
+Player="*uid://csvu7xdax8tng"
 
 [display]
 
@@ -23,6 +27,11 @@ window/stretch/aspect="expand"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/backstitch/plugin.cfg", "res://addons/team_create/plugin.cfg")
+
+[global_group]
+
+Enemy=""
+Player=""
 
 [input]
 
@@ -66,3 +75,4 @@ textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+2d/snap/snap_2d_transforms_to_pixel=true

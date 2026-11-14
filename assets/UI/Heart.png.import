@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0p3djr3ymnvc"
-path="res://.godot/imported/Road.png-f7294ab78fba1b3006e4820c812b59cd.ctex"
+uid="uid://bc7awo6175rx5"
+path="res://.godot/imported/Heart.png-9b1ac33425d1fca5fe365d605fdb0f42.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/map_bg/Road.png"
-dest_files=["res://.godot/imported/Road.png-f7294ab78fba1b3006e4820c812b59cd.ctex"]
+source_file="res://assets/UI/Heart.png"
+dest_files=["res://.godot/imported/Heart.png-9b1ac33425d1fca5fe365d605fdb0f42.ctex"]
 
 [params]
 

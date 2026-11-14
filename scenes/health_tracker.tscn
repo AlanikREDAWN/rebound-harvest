@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://c08w5lkrueu7y"]
+
+[ext_resource type="Texture2D" uid="uid://bc7awo6175rx5" path="res://assets/UI/Heart.png" id="1_pnbus"]
+[ext_resource type="Script" uid="uid://cp8gteif6gx2d" path="res://scripts/health_tracker.gd" id="1_ush18"]
+
+[node name="HealthTracker" type="Node2D" unique_id=737553579]
+script = ExtResource("1_ush18")
+
+[node name="heart1" type="Sprite2D" parent="." unique_id=548569209]
+texture = ExtResource("1_pnbus")
+
+[node name="heart2" type="Sprite2D" parent="." unique_id=1763815481]
+position = Vector2(40, 0)
+texture = ExtResource("1_pnbus")
+
+[node name="heart3" type="Sprite2D" parent="." unique_id=182106709]
+position = Vector2(80, 0)
+texture = ExtResource("1_pnbus")
