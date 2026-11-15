@@ -13,7 +13,7 @@ const enemyDataDict = {
 	},
 	"spring" = {
 		"speed":85.0,
-		"detectionRange":150.0
+		"detectionRange":250.0
 	},
 	"rancor" = {
 		"speed":30.0,
