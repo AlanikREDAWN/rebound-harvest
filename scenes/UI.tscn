@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bqekbtihtykxo"]
 
 [ext_resource type="Texture2D" uid="uid://b51cutsrgyspo" path="res://assets/sprites/projectiles/Detective Bullet.png" id="1_dj8aq"]
+[ext_resource type="Script" uid="uid://chwobt3ocnwws" path="res://scripts/bullet_label.gd" id="2_ro3t7"]
+[ext_resource type="Script" uid="uid://dupilwagr63ls" path="res://scripts/refresh_label.gd" id="3_5en4g"]
 
 [sub_resource type="SystemFont" id="SystemFont_j5ip0"]
 subpixel_positioning = 0
@@ -8,6 +10,8 @@ subpixel_positioning = 0
 [sub_resource type="LabelSettings" id="LabelSettings_oark8"]
 font = SubResource("SystemFont_j5ip0")
 font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_5en4g"]
 
 [node name="BulletUI" type="Control" unique_id=1198623545]
 layout_mode = 3
@@ -31,11 +35,22 @@ offset_transform_enabled = true
 offset_transform_rotation = -1.5707964
 texture = ExtResource("1_dj8aq")
 
-[node name="Label" type="Label" parent="." unique_id=226440790]
+[node name="BulletLabel" type="Label" parent="." unique_id=226440790]
 layout_mode = 0
 offset_left = 149.0
 offset_top = 22.0
 offset_right = 188.0
 offset_bottom = 71.0
-text = "x3"
+text = "x6"
 label_settings = SubResource("LabelSettings_oark8")
+script = ExtResource("2_ro3t7")
+
+[node name="RefreshLabel" type="Label" parent="." unique_id=80627781]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 55.0
+offset_right = 243.0
+offset_bottom = 104.0
+text = "Refreshes in...8"
+label_settings = SubResource("LabelSettings_5en4g")
+script = ExtResource("3_5en4g")

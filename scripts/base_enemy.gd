@@ -4,11 +4,19 @@ extends Node2D
 
 const enemyDataDict = {
 	"spider" = {
-		"speed":80.0,
+		"speed":100.0,
 		"detectionRange":300.0
 	},
 	"angel" = {
-		"speed":50.0,
+		"speed":70.0,
+		"detectionRange":400.0
+	},
+	"spring" = {
+		"speed":85.0,
+		"detectionRange":150.0
+	},
+	"rancor" = {
+		"speed":30.0,
 		"detectionRange":400.0
 	}
 }
@@ -39,11 +47,13 @@ func _process(delta: float) -> void:
 	# Check to prevent enemy code running after death
 	
 func updateTarget(delta) -> void:
-	if (Global.player_position - global_position).length() < DETECT_RADIUS:
-		target = Player
-		global_position += delta * ENEMY_SPEED * (Global.player_position - global_position).normalized()
-	else:
-		target = null
+	await get_tree().process_frame
+	if Player.instance:
+		if (Global.player_position - global_position).length() < DETECT_RADIUS:
+			target = Player
+			global_position += delta * ENEMY_SPEED * (Global.player_position - global_position).normalized()
+		else:
+			target = null
 
 func teleport() -> void:
 	while enemy_body_2d:
@@ -65,14 +75,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			pass
 		else:
 			player_health.set_health(player_health.get_health() - 1)
-		print(player_health.get_health())
-		
-		
+			body.find_child("Hit").play()
 	#var future_pos = target.position + target.velocity * prediction_factor
 	#velocity = -((position - future_pos).normalized() * speed)
 	#return
 
 func _death():
-#	
 	#get_tree().change_scene_to_file()
 	pass

@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://d07wklm282ib0"]
 
 [ext_resource type="FontFile" uid="uid://dm37gtcl1g0u6" path="res://assets/fonts/DeaconFlock-z8gAL.ttf" id="1_4ignj"]
+[ext_resource type="Script" uid="uid://cx753ky1vlqw7" path="res://scripts/title.gd" id="1_wosw1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ignj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wosw1"]
 
 [node name="Title" type="Control" unique_id=173679191]
 layout_mode = 3
@@ -9,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_wosw1")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1609847576]
 layout_mode = 1
@@ -31,12 +37,12 @@ offset_bottom = 349.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("1_4ignj")
 theme_override_font_sizes/font_size = 128
-text = "Willpipe
+text = "REBOUND
 "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="." unique_id=861508682]
+[node name="start" type="Button" parent="." unique_id=861508682]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -51,4 +57,26 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_4ignj")
 theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4ignj")
 text = "Start"
+
+[node name="quit" type="Button" parent="." unique_id=1777100792]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.5
+offset_top = 77.0
+offset_right = 58.5
+offset_bottom = 153.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_4ignj")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wosw1")
+text = "Quit"
+
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]

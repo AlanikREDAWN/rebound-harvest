@@ -13,12 +13,16 @@ var health: Health
 
 func _ready() -> void:
 	if Global.death == false:
-		health = Player.find_children("*", "Health")[0]
-		health.health_changed.connect(_update_hearts)
+		await get_tree().process_frame
+		if Player.instance:
+			health = Player.instance.find_children("*", "Health")[0]
+			health.health_changed.connect(_update_hearts)
 	
 func _physics_process(delta: float) -> void:
 	if Global.death == false:
-		_update_hearts()
+		await get_tree().process_frame
+		if Player.instance:
+			_update_hearts()
 
 func _update_hearts():
 	if health.get_health() == 3:

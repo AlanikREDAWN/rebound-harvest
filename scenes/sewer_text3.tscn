@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cfnetwt1twwnr"]
+
+[ext_resource type="FontFile" uid="uid://dm37gtcl1g0u6" path="res://assets/fonts/DeaconFlock-z8gAL.ttf" id="1_e7vrb"]
+[ext_resource type="FontFile" uid="uid://dm2artcnu7wwv" path="res://assets/fonts/ElegantTypewriter-YzBOy.ttf" id="2_x6ce0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdbg0"]
+bg_color = Color(0, 0, 0, 0.78431374)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_detail = 20
+
+[node name="SewerText3" type="CanvasLayer" unique_id=1262355251]
+
+[node name="Panel" type="Panel" parent="." unique_id=387470736]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -322.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wdbg0")
+
+[node name="Label" type="Label" parent="." unique_id=415394667]
+offset_left = 37.0
+offset_top = 366.0
+offset_right = 184.0
+offset_bottom = 434.0
+theme_override_fonts/font = ExtResource("1_e7vrb")
+theme_override_font_sizes/font_size = 64
+text = "Thoughts"
+
+[node name="Label2" type="Label" parent="." unique_id=482248214]
+offset_left = 98.0
+offset_top = 446.0
+offset_right = 1072.0
+offset_bottom = 559.0
+theme_override_fonts/font = ExtResource("2_x6ce0")
+theme_override_font_sizes/font_size = 48
+text = "Only when he needs you to be"
+autowrap_mode = 3

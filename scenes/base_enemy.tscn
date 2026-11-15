@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cviv5u177lwhv" path="res://assets/sprites/enemies/Spider.png" id="1_n1jr3"]
 [ext_resource type="Script" uid="uid://y4f3trcfd4hy" path="res://scripts/base_enemy.gd" id="1_sw3va"]
 [ext_resource type="Script" uid="uid://d3ftjo7gectpn" path="res://scripts/health.gd" id="2_2kb2m"]
+[ext_resource type="AudioStream" uid="uid://dk0ietipgqvhw" path="res://assets/Sounds/Enemy Death.wav" id="4_kegi0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sw3va"]
 atlas = ExtResource("1_n1jr3")
@@ -23,6 +24,7 @@ animations = [{
 radius = 2.619681
 
 [node name="baseEnemy" type="CharacterBody2D" unique_id=2118979394]
+process_mode = 1
 script = ExtResource("1_sw3va")
 metadata/type = "spider"
 
@@ -32,9 +34,13 @@ metadata/type = "spider"
 collision_layer = 4
 metadata/_tc_offline_added = true
 
+[node name="EnemyDeathNoise" type="AudioStreamPlayer" parent="CharacterBody2D" unique_id=2119925788]
+stream = ExtResource("4_kegi0")
+
 [node name="Health" type="Node" parent="CharacterBody2D" unique_id=1820158022]
+process_mode = 1
 script = ExtResource("2_2kb2m")
-max_health = 2
+max_health = 0
 metadata/_custom_type_script = "uid://d3ftjo7gectpn"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=636771397]

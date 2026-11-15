@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://y4f3trcfd4hy" path="res://scripts/base_enemy.gd" id="1_6gyu6"]
 [ext_resource type="Script" uid="uid://d3ftjo7gectpn" path="res://scripts/health.gd" id="2_whldq"]
 [ext_resource type="Texture2D" uid="uid://cqamct23udeqe" path="res://assets/sprites/enemies/Angel.png" id="3_6gyu6"]
+[ext_resource type="AudioStream" uid="uid://dk0ietipgqvhw" path="res://assets/Sounds/Enemy Death.wav" id="4_whldq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_whldq"]
 atlas = ExtResource("3_6gyu6")
@@ -24,6 +25,7 @@ radius = 4.807535
 height = 22.504774
 
 [node name="angel" type="CharacterBody2D" unique_id=2118979394]
+process_mode = 1
 script = ExtResource("1_6gyu6")
 metadata/type = "angel"
 
@@ -33,9 +35,13 @@ metadata/type = "angel"
 collision_layer = 4
 metadata/_tc_offline_added = true
 
+[node name="EnemyDeathNoise" type="AudioStreamPlayer" parent="CharacterBody2D" unique_id=2043822133]
+stream = ExtResource("4_whldq")
+
 [node name="Health" type="Node" parent="CharacterBody2D" unique_id=1820158022]
+process_mode = 1
 script = ExtResource("2_whldq")
-max_health = 4
+max_health = 2
 metadata/_custom_type_script = "uid://d3ftjo7gectpn"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=636771397]

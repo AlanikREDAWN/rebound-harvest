@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://dcf2s2abxtt8e"]
+
+[ext_resource type="FontFile" uid="uid://dm37gtcl1g0u6" path="res://assets/fonts/DeaconFlock-z8gAL.ttf" id="1_5p3tu"]
+[ext_resource type="FontFile" uid="uid://dm2artcnu7wwv" path="res://assets/fonts/ElegantTypewriter-YzBOy.ttf" id="2_mpb87"]
+[ext_resource type="Texture2D" uid="uid://ctikwgyyw12px" path="res://assets/sprites/player/Swag Jig Sheet.png" id="3_mpb87"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdbg0"]
+bg_color = Color(0, 0, 0, 0.78431374)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_detail = 20
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fatlu"]
+atlas = ExtResource("3_mpb87")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dh85f"]
+atlas = ExtResource("3_mpb87")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm2mi"]
+atlas = ExtResource("3_mpb87")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lk4oy"]
+atlas = ExtResource("3_mpb87")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vx0jy"]
+atlas = ExtResource("3_mpb87")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bm5v1"]
+atlas = ExtResource("3_mpb87")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nok62"]
+atlas = ExtResource("3_mpb87")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yy8be"]
+atlas = ExtResource("3_mpb87")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktjak"]
+atlas = ExtResource("3_mpb87")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atf1f"]
+atlas = ExtResource("3_mpb87")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k6jfe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fatlu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dh85f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm2mi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lk4oy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vx0jy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bm5v1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nok62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yy8be")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktjak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atf1f")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="SewerText5" type="CanvasLayer" unique_id=1262355251]
+
+[node name="Panel" type="Panel" parent="." unique_id=387470736]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -322.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wdbg0")
+
+[node name="Label" type="Label" parent="." unique_id=415394667]
+offset_left = 37.0
+offset_top = 366.0
+offset_right = 184.0
+offset_bottom = 434.0
+theme_override_fonts/font = ExtResource("1_5p3tu")
+theme_override_font_sizes/font_size = 64
+text = "Willow"
+
+[node name="Label2" type="Label" parent="." unique_id=482248214]
+offset_left = 98.0
+offset_top = 446.0
+offset_right = 1072.0
+offset_bottom = 559.0
+theme_override_fonts/font = ExtResource("2_mpb87")
+theme_override_font_sizes/font_size = 48
+text = "Nah, Imma do my own thing.
+"
+autowrap_mode = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=282566665]
+process_mode = 3
+position = Vector2(984, 486)
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_k6jfe")
+frame_progress = 0.13106254

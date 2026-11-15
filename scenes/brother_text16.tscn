@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://shpguo6qyshi"]
+
+[ext_resource type="Texture2D" uid="uid://sgta5mwmupth" path="res://assets/sprites/Story Elements/Necklace.png" id="1_8gaxs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdbg0"]
+bg_color = Color(0, 0, 0, 0.78431374)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_detail = 20
+
+[node name="BrotherText16" type="CanvasLayer" unique_id=1262355251]
+
+[node name="Panel" type="Panel" parent="." unique_id=387470736]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -322.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wdbg0")
+
+[node name="Necklace" type="Sprite2D" parent="." unique_id=649466573]
+position = Vector2(246.99998, 479)
+scale = Vector2(10, 10)
+texture = ExtResource("1_8gaxs")

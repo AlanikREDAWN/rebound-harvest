@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bdtd3i1p60mh6"]
+
+[ext_resource type="Texture2D" uid="uid://bwj10sldluw7f" path="res://assets/sprites/Story Elements/Chud Brother.png" id="1_dc15s"]
+[ext_resource type="Script" uid="uid://bsmnuk737s1x0" path="res://scripts/brother.gd" id="1_l4bo4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dc15s"]
+size = Vector2(42, 325)
+
+[node name="Brother" type="CharacterBody2D" unique_id=1242596473]
+script = ExtResource("1_l4bo4")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1041692506]
+
+[node name="ChudBrother" type="Sprite2D" parent="Area2D" unique_id=391018505]
+position = Vector2(0, -16)
+texture = ExtResource("1_dc15s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1351059158]
+position = Vector2(1, -8.5)
+shape = SubResource("RectangleShape2D_dc15s")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

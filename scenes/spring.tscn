@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://su7m1mxp04yg"]
+
+[ext_resource type="Script" uid="uid://y4f3trcfd4hy" path="res://scripts/base_enemy.gd" id="1_iudvb"]
+[ext_resource type="AudioStream" uid="uid://dk0ietipgqvhw" path="res://assets/Sounds/Enemy Death.wav" id="2_l13eo"]
+[ext_resource type="Script" uid="uid://d3ftjo7gectpn" path="res://scripts/health.gd" id="3_yrxyh"]
+[ext_resource type="Texture2D" uid="uid://dq1galdojunkh" path="res://assets/sprites/enemies/Spring Enemy.png" id="4_iudvb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l13eo"]
+atlas = ExtResource("4_iudvb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oark8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l13eo")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yrxyh"]
+radius = 1.1094313
+height = 8.03742
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l7nqg"]
+radius = 1.1094313
+height = 8.037419
+
+[node name="baseEnemy" type="CharacterBody2D" unique_id=2118979394]
+process_mode = 1
+script = ExtResource("1_iudvb")
+metadata/type = "spring"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1572576942]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=866245739 groups=["Enemy"]]
+collision_layer = 4
+metadata/_tc_offline_added = true
+
+[node name="EnemyDeathNoise" type="AudioStreamPlayer" parent="CharacterBody2D" unique_id=2119925788]
+stream = ExtResource("2_l13eo")
+
+[node name="Health" type="Node" parent="CharacterBody2D" unique_id=1820158022]
+process_mode = 1
+script = ExtResource("3_yrxyh")
+max_health = 1
+metadata/_custom_type_script = "uid://d3ftjo7gectpn"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=636771397]
+position = Vector2(-1.9073486e-06, -11)
+scale = Vector2(0.74999994, 0.71874994)
+sprite_frames = SubResource("SpriteFrames_oark8")
+metadata/_tc_offline_added = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=81483564]
+position = Vector2(0, -11)
+scale = Vector2(2.7040884, 2.488361)
+shape = SubResource("CapsuleShape2D_yrxyh")
+metadata/_tc_offline_added = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1451923046]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=530681280]
+position = Vector2(0, -11)
+scale = Vector2(2.7040884, 2.488361)
+shape = SubResource("CapsuleShape2D_l7nqg")
+metadata/_tc_offline_added = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
