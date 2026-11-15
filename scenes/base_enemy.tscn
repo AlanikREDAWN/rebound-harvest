@@ -24,7 +24,7 @@ radius = 2.619681
 
 [node name="baseEnemy" type="CharacterBody2D" unique_id=2118979394]
 script = ExtResource("1_sw3va")
-metadata/speed = 80.0
+metadata/type = "spider"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1572576942]
 

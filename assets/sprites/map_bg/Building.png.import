@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dx0armth6k760"
-path="res://.godot/imported/Golden Pipe.png-98984e95f68a909dfc189b8be7d1f4d8.ctex"
+uid="uid://b16get58s0sny"
+path="res://.godot/imported/Building.png-ee69eb0b937b55aa671a3cd96fae262c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/map_bg/Golden Pipe.png"
-dest_files=["res://.godot/imported/Golden Pipe.png-98984e95f68a909dfc189b8be7d1f4d8.ctex"]
+source_file="res://assets/sprites/map_bg/Building.png"
+dest_files=["res://.godot/imported/Building.png-ee69eb0b937b55aa671a3cd96fae262c.ctex"]
 
 [params]
 

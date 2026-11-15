@@ -13,12 +13,13 @@ config_version=5
 config/name="Detective Guy Thing"
 run/main_scene="uid://bwyespjgri0w1"
 config/features=PackedStringArray("4.7", "GL Compatibility")
+boot_splash/bg_color=Color(0.057835825, 2.6351587e-05, 0.23401344, 1)
 config/icon="res://icon.svg"
 
 [autoload]
 
-Global="*uid://b7itr4d1fi2xc"
 Player="*uid://csvu7xdax8tng"
+Global="*uid://b7itr4d1fi2xc"
 
 [display]
 
