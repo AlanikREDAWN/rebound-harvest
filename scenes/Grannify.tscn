@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dx0armth6k760" path="res://assets/sprites/Story Elements/Golden Pipe.png" id="6_b7c1g"]
 [ext_resource type="Texture2D" uid="uid://dtyptiwh1a4sp" path="res://assets/sprites/Story Elements/mlg glasses.png" id="7_b7c1g"]
 [ext_resource type="FontFile" uid="uid://dm37gtcl1g0u6" path="res://assets/fonts/DeaconFlock-z8gAL.ttf" id="9_efp35"]
+[ext_resource type="AudioStream" uid="uid://c8r1uq5771af" path="res://assets/Sounds/grannyBeatdown.ogg" id="10_i7w6t"]
 
 [sub_resource type="Animation" id="Animation_i3isr"]
 resource_name = "Arrest"
@@ -404,3 +405,6 @@ offset_right = 197.0
 offset_bottom = -33.0
 text = "The End"
 label_settings = SubResource("LabelSettings_oark8")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1374292612]
+stream = ExtResource("10_i7w6t")

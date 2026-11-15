@@ -45,7 +45,7 @@ stream = ExtResource("2_2svyb")
 [node name="Health" type="Node" parent="CharacterBody2D" unique_id=1820158022]
 process_mode = 1
 script = ExtResource("3_pdvgh")
-max_health = 9
+max_health = 5
 metadata/_custom_type_script = "uid://d3ftjo7gectpn"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=636771397]
