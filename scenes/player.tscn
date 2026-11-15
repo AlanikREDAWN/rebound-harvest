@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://csvu7xdax8tng"]
 
 [ext_resource type="Texture2D" uid="uid://b0pxefownkvqb" path="res://assets/sprites/player/Simple Detective.png" id="1_3vyb7"]
-[ext_resource type="Script" uid="uid://bdgkc1tgtjbt0" path="res://scripts/Player.gd" id="1_dqkch"]
+[ext_resource type="Script" uid="uid://bdgkc1tgtjbt0" path="res://scripts/player.gd" id="1_dqkch"]
 [ext_resource type="PackedScene" uid="uid://mym5qjyonaf0" path="res://scenes/gun.tscn" id="2_g2els"]
 [ext_resource type="Script" uid="uid://d3ftjo7gectpn" path="res://scripts/health.gd" id="2_qlg0r"]
 [ext_resource type="PackedScene" uid="uid://c08w5lkrueu7y" path="res://scenes/health_tracker.tscn" id="2_tuyoq"]
+[ext_resource type="PackedScene" uid="uid://bqekbtihtykxo" path="res://scenes/UI.tscn" id="4_tuyoq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t1as8"]
 animations = [{
@@ -35,6 +36,8 @@ position = Vector2(89, -82)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=567507159]
 zoom = Vector2(3, 3)
 metadata/_tc_offline_added = true
+
+[node name="BulletUI" parent="Camera2D" unique_id=1198623545 instance=ExtResource("4_tuyoq")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=5484602]
 position = Vector2(1, -16)

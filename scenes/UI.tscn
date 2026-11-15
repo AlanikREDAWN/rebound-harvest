@@ -3,32 +3,39 @@
 [ext_resource type="Texture2D" uid="uid://b51cutsrgyspo" path="res://assets/sprites/projectiles/Detective Bullet.png" id="1_dj8aq"]
 
 [sub_resource type="SystemFont" id="SystemFont_j5ip0"]
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_oark8"]
 font = SubResource("SystemFont_j5ip0")
-font_size = 50
+font_size = 30
 
-[node name="Control" type="Control" unique_id=1198623545]
+[node name="BulletUI" type="Control" unique_id=1198623545]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -4.0
+offset_right = -616.0
+offset_bottom = -229.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=448235612]
 layout_mode = 0
-offset_right = 137.0
-offset_bottom = 134.0
+offset_left = 103.0
+offset_top = 4.0
+offset_right = 174.0
+offset_bottom = 74.0
 offset_transform_enabled = true
 offset_transform_rotation = -1.5707964
 texture = ExtResource("1_dj8aq")
 
 [node name="Label" type="Label" parent="." unique_id=226440790]
 layout_mode = 0
-offset_left = 91.0
-offset_top = 38.0
-offset_right = 147.0
-offset_bottom = 107.0
+offset_left = 149.0
+offset_top = 22.0
+offset_right = 188.0
+offset_bottom = 71.0
 text = "x3"
 label_settings = SubResource("LabelSettings_oark8")
