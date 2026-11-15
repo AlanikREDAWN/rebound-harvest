@@ -37,5 +37,5 @@ offset_right = 1072.0
 offset_bottom = 559.0
 theme_override_fonts/font = ExtResource("2_x2m6b")
 theme_override_font_sizes/font_size = 48
-text = "I don’t know."
+text = "I don’t know. Why don't you keep going forward to find her?"
 autowrap_mode = 3

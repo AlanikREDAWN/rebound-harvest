@@ -5,7 +5,7 @@ static var instance: Player
 
 @onready var char_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
-const SPEED = 150.0
+const SPEED = 120.0
 const RECOIL_MAGNITUDE = 800.0
 
 func _physics_process(delta: float) -> void:

@@ -10,6 +10,8 @@ const REF_ANGEL: PackedScene = preload("res://scenes/angel.tscn")
 const REF_SPRING: PackedScene = preload("res://scenes/spring.tscn")
 const REF_RANCOR: PackedScene = preload("res://scenes/rancor.tscn")
 
+const ENEMY_NO_GO_ZONE = 75.0
+
 const monsterListDict = {
 	"1":[2, 5, [REF_SPIDER, 0.9], [REF_ANGEL, 0.1]],
 	"2":[1.5, 7, [REF_SPIDER, 0.8], [REF_ANGEL, 0.2]],
@@ -41,6 +43,14 @@ func _exited_screen() -> void:
 	onScreen = false
 	
 func spawn_enemy() -> void:
+	var playerPos = Vector2(0,0)
+	
+	if Global.player_position:
+		playerPos = Global.player_position
+	
+	if (playerPos - collision_shape_2d.global_position).length() < ENEMY_NO_GO_ZONE:
+		return
+		
 	if not onScreen:
 		return
 	

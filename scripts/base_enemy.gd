@@ -4,7 +4,7 @@ extends Node2D
 
 const enemyDataDict = {
 	"spider" = {
-		"speed":100.0,
+		"speed":90.0,
 		"detectionRange":300.0
 	},
 	"angel" = {
