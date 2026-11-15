@@ -37,3 +37,8 @@ shape = SubResource("CircleShape2D_x77fm")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1633086111]
 stream = ExtResource("3_gp1hk")
 metadata/_tc_offline_added = true
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=64032906]
+wait_time = 0.3
+
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_timer_timeout"]
