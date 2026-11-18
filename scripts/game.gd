@@ -1,97 +1,146 @@
 extends Node2D
+
 @onready var simple_detective: Sprite2D = $SimpleDetective
 @onready var camera_2d: Camera2D = $Camera2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var player_instance = preload("res://scenes/player.tscn")
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	simple_detective.visible = false
+	simple_detective.visible = false # hide the detective dupe - used for cutscene 
+	
 	Global.brotherEntered.connect(_brotherEntered)
+	
+	# spawn player when the game scene is switched to
 	var player = player_instance.instantiate()
 	Player.instance = player
 	get_tree().root.add_child.call_deferred(player)
+
+	# go to the spawn cutscene right away - don't want the player trying to run away before seeing the story
 	if Global.spawnText == false:
 		Global.spawnText = true
 		Global.cutscene = Global.Cutscenes.SPAWN
-	
+
 func _brotherEntered():
 	Global.brotherText = true
 	Global.cutscene = Global.Cutscenes.BROTHER
-	print("brotherText is true")
-	
 
+func hideUI():
+	Player.instance.find_child("BulletUI").visible = false
+	Player.instance.find_child("HealthTracker").visible = false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func showUI():
+	Player.instance.find_child("BulletUI").visible = true
+	Player.instance.find_child("HealthTracker").visible = true
+
 func _process(delta: float) -> void:
 	match Global.cutscene:
 		Global.Cutscenes.SPAWN:
 			if Global.spawnText == true:
-				Player.instance.find_child("BulletUI").visible = false
-				Player.instance.find_child("HealthTracker").visible = false
+				hideUI()
 				
-				Player.instance.find_child("SpawnText1").visible = false
-				Player.instance.find_child("SpawnText2").visible = false
-				Player.instance.find_child("SpawnText3").visible = false
-				Player.instance.find_child("SpawnText4").visible = false
-				Player.instance.find_child("SpawnText5").visible = false
+				# create list of SpawnText scenes (since they're just numbered 1-5)
+				var spawnTexts = [] 
+				for i in range(6):
+					spawnTexts.append("SpawnText" + str(i))
+				
+				spawnTexts.remove_at(0) # remove SpawnText0 since it doesn't actually exist
+				
+				# loop through list and hide em all 
+				for i in spawnTexts.size():
+					var spawnText = spawnTexts[i]
+					Player.instance.find_child(spawnText).visible = false
+				
 				get_tree().paused = true
+				
 				match Global.spawnTextInt:
 					1:
-						Player.instance.find_child("SpawnText1").visible = true
-						Player.instance.find_child("SpawnText2").visible = false
-						Player.instance.find_child("SpawnText3").visible = false
-						Player.instance.find_child("SpawnText4").visible = false
-						Player.instance.find_child("SpawnText5").visible = false
+						Player.instance.find_child("spawnText1").visible = true
+						
+						# To Delete
+						#Player.instance.find_child("SpawnText1").visible = true
+						#Player.instance.find_child("SpawnText2").visible = false
+						#Player.instance.find_child("SpawnText3").visible = false
+						#Player.instance.find_child("SpawnText4").visible = false
+						#Player.instance.find_child("SpawnText5").visible = false
 					2:
 						Player.instance.find_child("SpawnText1").visible = false
 						Player.instance.find_child("SpawnText2").visible = true
-						Player.instance.find_child("SpawnText3").visible = false
-						Player.instance.find_child("SpawnText4").visible = false
-						Player.instance.find_child("SpawnText5").visible = false
+						
+						# To Delete
+						#Player.instance.find_child("SpawnText1").visible = false
+						#Player.instance.find_child("SpawnText2").visible = true
+						#Player.instance.find_child("SpawnText3").visible = false
+						#Player.instance.find_child("SpawnText4").visible = false
+						#Player.instance.find_child("SpawnText5").visible = false
 					3:
-						Player.instance.find_child("SpawnText1").visible = false
 						Player.instance.find_child("SpawnText2").visible = false
 						Player.instance.find_child("SpawnText3").visible = true
-						Player.instance.find_child("SpawnText4").visible = false
-						Player.instance.find_child("SpawnText5").visible = false
+						
+						# To Delete
+						#Player.instance.find_child("SpawnText1").visible = false
+						#Player.instance.find_child("SpawnText2").visible = false
+						#Player.instance.find_child("SpawnText3").visible = true
+						#Player.instance.find_child("SpawnText4").visible = false
+						#Player.instance.find_child("SpawnText5").visible = false
 					4:
-						Player.instance.find_child("SpawnText1").visible = false
-						Player.instance.find_child("SpawnText2").visible = false
 						Player.instance.find_child("SpawnText3").visible = false
 						Player.instance.find_child("SpawnText4").visible = true
-						Player.instance.find_child("SpawnText5").visible = false
+						
+						# To Delete
+						#Player.instance.find_child("SpawnText1").visible = false
+						#Player.instance.find_child("SpawnText2").visible = false
+						#Player.instance.find_child("SpawnText3").visible = false
+						#Player.instance.find_child("SpawnText4").visible = true
+						#Player.instance.find_child("SpawnText5").visible = false
 					5:
-						Player.instance.find_child("SpawnText1").visible = false
-						Player.instance.find_child("SpawnText2").visible = false
-						Player.instance.find_child("SpawnText3").visible = false
 						Player.instance.find_child("SpawnText4").visible = false
 						Player.instance.find_child("SpawnText5").visible = true
+						
+						# To Delete
+						#Player.instance.find_child("SpawnText1").visible = false
+						#Player.instance.find_child("SpawnText2").visible = false
+						#Player.instance.find_child("SpawnText3").visible = false
+						#Player.instance.find_child("SpawnText4").visible = false
+						#Player.instance.find_child("SpawnText5").visible = true
 					var n when n > 5:
 						Global.spawnText = false
 			elif Global.spawnText == false:
-				Player.instance.find_child("SpawnText1").visible = false
-				Player.instance.find_child("SpawnText2").visible = false
-				Player.instance.find_child("SpawnText3").visible = false
-				Player.instance.find_child("SpawnText4").visible = false
-				Player.instance.find_child("SpawnText5").visible = false
+				# create list of SpawnText scenes (since they're just numbered 1-5)
+				var spawnTexts = [] 
+				for i in range(6):
+					spawnTexts.append("SpawnText" + str(i))
+				
+				spawnTexts.remove_at(0) # remove SpawnText0 since it doesn't actually exist
+				
+				# loop through list and hide em all 
+				for i in spawnTexts.size():
+					var spawnText = spawnTexts[i]
+					Player.instance.find_child(spawnText).visible = false
+				
+				# To Delete
+				#Player.instance.find_child("SpawnText1").visible = false
+				#Player.instance.find_child("SpawnText2").visible = false
+				#Player.instance.find_child("SpawnText3").visible = false
+				#Player.instance.find_child("SpawnText4").visible = false
+				#Player.instance.find_child("SpawnText5").visible = false
 				if Global.spawnTextCompleted == false:
-					Player.instance.find_child("BulletUI").visible = true
-					Player.instance.find_child("HealthTracker").visible = true
+					showUI()
 					get_tree().paused = false
 					Global.spawnTextCompleted = true
 		Global.Cutscenes.BROTHER:
 			if Global.brotherText == true:
-				Player.instance.find_child("BulletUI").visible = false
-				Player.instance.find_child("HealthTracker").visible = false
-					
+				hideUI()
+				
+				# create list of BrotherText scenes (since they're just numbered 1-21)
 				var brotherTexts = []
 				for i in range(22):
 					brotherTexts.append("BrotherText" + str(i))
 					
-				brotherTexts.remove_at(0)
-					
+				brotherTexts.remove_at(0) # remove BrotherText0 since it doesn't actually exist
+				
+				# loop through list and hide em all
 				for i in brotherTexts.size():
 					var brotherText = brotherTexts[i]
 					Player.instance.find_child(brotherText).visible = false
@@ -99,12 +148,15 @@ func _process(delta: float) -> void:
 				get_tree().paused = true
 				match Global.brotherTextInt:
 					1:
+						Player.instance.find_child("BrotherText1").visible = true
+						
+						# To Delete
 							#for i in brotherTexts.size():
 								#var brotherText = brotherTexts[i]
 								#Player.instance.find_child(brotherText).visible = false
 							#
 							#Player.instance.find_child("BrotherText1").visible = true
-						Player.instance.find_child("BrotherText1").visible = true
+						
 							#Player.instance.find_child("BrotherText2").visible = false
 							#Player.instance.find_child("BrotherText3").visible = false
 							#Player.instance.find_child("BrotherText4").visible = false
@@ -126,13 +178,16 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText20").visible = false
 							#Player.instance.find_child("BrotherText21").visible = false
 					2:
+						Player.instance.find_child("BrotherText1").visible = false
+						Player.instance.find_child("BrotherText2").visible = true
+						
+						# To Delete
 							#for i in brotherTexts.size():
 								#var brotherText = brotherTexts[i]
 								#Player.instance.find_child(brotherText).visible = false
 							#
 							#Player.instance.find_child("BrotherText2").visible = true
-						Player.instance.find_child("BrotherText1").visible = false
-						Player.instance.find_child("BrotherText2").visible = true
+
 							#Player.instance.find_child("BrotherText3").visible = false
 							#Player.instance.find_child("BrotherText4").visible = false
 							#Player.instance.find_child("BrotherText5").visible = false
@@ -153,14 +208,17 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText20").visible = false
 							#Player.instance.find_child("BrotherText21").visible = false
 					3:
+						Player.instance.find_child("BrotherText2").visible = false
+						Player.instance.find_child("BrotherText3").visible = true
+						
+						# To Delete
 							#for i in brotherTexts.size():
 								#var brotherText = brotherTexts[i]
 								#Player.instance.find_child(brotherText).visible = false
 							#
 							#Player.instance.find_child("BrotherText3").visible = true
 							#Player.instance.find_child("BrotherText1").visible = false
-						Player.instance.find_child("BrotherText2").visible = false
-						Player.instance.find_child("BrotherText3").visible = true
+
 							#Player.instance.find_child("BrotherText4").visible = false
 							#Player.instance.find_child("BrotherText5").visible = false
 							#Player.instance.find_child("BrotherText6").visible = false
@@ -180,6 +238,10 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText20").visible = false
 							#Player.instance.find_child("BrotherText21").visible = false
 					4:
+						Player.instance.find_child("BrotherText3").visible = false
+						Player.instance.find_child("BrotherText4").visible = true
+						
+						# To Delete
 							#for i in brotherTexts.size():
 								#var brotherText = brotherTexts[i]
 								#Player.instance.find_child(brotherText).visible = false
@@ -187,8 +249,7 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText4").visible = true
 							#Player.instance.find_child("BrotherText1").visible = false
 							#Player.instance.find_child("BrotherText2").visible = false
-						Player.instance.find_child("BrotherText3").visible = false
-						Player.instance.find_child("BrotherText4").visible = true
+
 							#Player.instance.find_child("BrotherText5").visible = false
 							#Player.instance.find_child("BrotherText6").visible = false
 							#Player.instance.find_child("BrotherText7").visible = false
@@ -207,6 +268,10 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText20").visible = false
 							#Player.instance.find_child("BrotherText21").visible = false
 					5:
+						Player.instance.find_child("BrotherText4").visible = false
+						Player.instance.find_child("BrotherText5").visible = true
+						
+						# To Delete
 							#for i in brotherTexts.size():
 								#var brotherText = brotherTexts[i]
 								#Player.instance.find_child(brotherText).visible = false
@@ -215,8 +280,7 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText1").visible = false
 							#Player.instance.find_child("BrotherText2").visible = false
 							#Player.instance.find_child("BrotherText3").visible = false
-						Player.instance.find_child("BrotherText4").visible = false
-						Player.instance.find_child("BrotherText5").visible = true
+
 							#Player.instance.find_child("BrotherText6").visible = false
 							#Player.instance.find_child("BrotherText7").visible = false
 							#Player.instance.find_child("BrotherText8").visible = false
@@ -234,6 +298,10 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText20").visible = false
 							#Player.instance.find_child("BrotherText21").visible = false
 					6:
+						Player.instance.find_child("BrotherText5").visible = false
+						Player.instance.find_child("BrotherText6").visible = true
+						
+						# To Delete
 							#for i in brotherTexts.size():
 								#var brotherText = brotherTexts[i]
 								#Player.instance.find_child(brotherText).visible = false
@@ -243,8 +311,7 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText2").visible = false
 							#Player.instance.find_child("BrotherText3").visible = false
 							#Player.instance.find_child("BrotherText4").visible = false
-						Player.instance.find_child("BrotherText5").visible = false
-						Player.instance.find_child("BrotherText6").visible = true
+
 							#Player.instance.find_child("BrotherText7").visible = false
 							#Player.instance.find_child("BrotherText8").visible = false
 							#Player.instance.find_child("BrotherText9").visible = false
@@ -261,6 +328,10 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText20").visible = false
 							#Player.instance.find_child("BrotherText21").visible = false
 					7:
+						Player.instance.find_child("BrotherText6").visible = false
+						Player.instance.find_child("BrotherText7").visible = true
+						
+						# To Delete
 							#for i in brotherTexts.size():
 								#var brotherText = brotherTexts[i]
 								#Player.instance.find_child(brotherText).visible = false
@@ -271,8 +342,7 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText3").visible = false
 							#Player.instance.find_child("BrotherText4").visible = false
 							#Player.instance.find_child("BrotherText5").visible = false
-						Player.instance.find_child("BrotherText6").visible = false
-						Player.instance.find_child("BrotherText7").visible = true
+
 							#Player.instance.find_child("BrotherText8").visible = false
 							#Player.instance.find_child("BrotherText9").visible = false
 							#Player.instance.find_child("BrotherText10").visible = false
@@ -288,6 +358,10 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText20").visible = false
 							#Player.instance.find_child("BrotherText21").visible = false
 					8:
+						Player.instance.find_child("BrotherText7").visible = false
+						Player.instance.find_child("BrotherText8").visible = true
+						
+						# To Delete
 							#for i in brotherTexts.size():
 								#var brotherText = brotherTexts[i]
 								#Player.instance.find_child(brotherText).visible = false
@@ -299,8 +373,7 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText4").visible = false
 							#Player.instance.find_child("BrotherText5").visible = false
 							#Player.instance.find_child("BrotherText6").visible = false
-						Player.instance.find_child("BrotherText7").visible = false
-						Player.instance.find_child("BrotherText8").visible = true
+
 							#Player.instance.find_child("BrotherText9").visible = false
 							#Player.instance.find_child("BrotherText10").visible = false
 							#Player.instance.find_child("BrotherText11").visible = false
@@ -315,6 +388,10 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText20").visible = false
 							#Player.instance.find_child("BrotherText21").visible = false
 					9:
+						Player.instance.find_child("BrotherText8").visible = false
+						Player.instance.find_child("BrotherText9").visible = true
+						
+						# To Delete
 							#for i in brotherTexts.size():
 								#var brotherText = brotherTexts[i]
 								#Player.instance.find_child(brotherText).visible = false
@@ -327,8 +404,7 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText5").visible = false
 							#Player.instance.find_child("BrotherText6").visible = false
 							#Player.instance.find_child("BrotherText7").visible = false
-						Player.instance.find_child("BrotherText8").visible = false
-						Player.instance.find_child("BrotherText9").visible = true
+
 							#Player.instance.find_child("BrotherText10").visible = false
 							#Player.instance.find_child("BrotherText11").visible = false
 							#Player.instance.find_child("BrotherText12").visible = false
@@ -342,6 +418,10 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText20").visible = false
 							#Player.instance.find_child("BrotherText21").visible = false
 					10:
+						Player.instance.find_child("BrotherText9").visible = false
+						Player.instance.find_child("BrotherText10").visible = true
+						
+						# To Delete
 							#for i in brotherTexts.size():
 								#var brotherText = brotherTexts[i]
 								#Player.instance.find_child(brotherText).visible = false
@@ -355,8 +435,7 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText6").visible = false
 							#Player.instance.find_child("BrotherText7").visible = false
 							#Player.instance.find_child("BrotherText8").visible = false
-						Player.instance.find_child("BrotherText9").visible = false
-						Player.instance.find_child("BrotherText10").visible = true
+
 							#Player.instance.find_child("BrotherText11").visible = false
 							#Player.instance.find_child("BrotherText12").visible = false
 							#Player.instance.find_child("BrotherText13").visible = false
@@ -369,6 +448,10 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText20").visible = false
 							#Player.instance.find_child("BrotherText21").visible = false
 					11:
+						Player.instance.find_child("BrotherText10").visible = false
+						Player.instance.find_child("BrotherText11").visible = true
+						
+						# To Delete
 							#for i in brotherTexts.size():
 								#var brotherText = brotherTexts[i]
 								#Player.instance.find_child(brotherText).visible = false
@@ -383,8 +466,7 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText7").visible = false
 							#Player.instance.find_child("BrotherText8").visible = false
 							#Player.instance.find_child("BrotherText9").visible = false
-						Player.instance.find_child("BrotherText10").visible = false
-						Player.instance.find_child("BrotherText11").visible = true
+
 							#Player.instance.find_child("BrotherText12").visible = false
 							#Player.instance.find_child("BrotherText13").visible = false
 							#Player.instance.find_child("BrotherText14").visible = false
@@ -396,6 +478,10 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText20").visible = false
 							#Player.instance.find_child("BrotherText21").visible = false
 					12:
+						Player.instance.find_child("BrotherText11").visible = false
+						Player.instance.find_child("BrotherText12").visible = true
+						
+						# To Delete
 							#for i in brotherTexts.size():
 								#var brotherText = brotherTexts[i]
 								#Player.instance.find_child(brotherText).visible = false
@@ -411,8 +497,7 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText8").visible = false
 							#Player.instance.find_child("BrotherText9").visible = false
 							#Player.instance.find_child("BrotherText10").visible = false
-						Player.instance.find_child("BrotherText11").visible = false
-						Player.instance.find_child("BrotherText12").visible = true
+
 							#Player.instance.find_child("BrotherText13").visible = false
 							#Player.instance.find_child("BrotherText14").visible = false
 							#Player.instance.find_child("BrotherText15").visible = false
@@ -423,6 +508,10 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText20").visible = false
 							#Player.instance.find_child("BrotherText21").visible = false
 					13:
+						Player.instance.find_child("BrotherText12").visible = false
+						Player.instance.find_child("BrotherText13").visible = true
+						
+						# To Delete
 							#for i in brotherTexts.size():
 								#var brotherText = brotherTexts[i]
 								#Player.instance.find_child(brotherText).visible = false
@@ -439,8 +528,7 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText9").visible = false
 							#Player.instance.find_child("BrotherText10").visible = false
 							#Player.instance.find_child("BrotherText11").visible = false
-						Player.instance.find_child("BrotherText12").visible = false
-						Player.instance.find_child("BrotherText13").visible = true
+
 							#Player.instance.find_child("BrotherText14").visible = false
 							#Player.instance.find_child("BrotherText15").visible = false
 							#Player.instance.find_child("BrotherText16").visible = false
@@ -450,6 +538,10 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText20").visible = false
 							#Player.instance.find_child("BrotherText21").visible = false
 					14:
+						Player.instance.find_child("BrotherText13").visible = false
+						Player.instance.find_child("BrotherText14").visible = true
+						
+						# To Delete
 							#for i in brotherTexts.size():
 								#var brotherText = brotherTexts[i]
 								#Player.instance.find_child(brotherText).visible = false
@@ -467,8 +559,7 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText10").visible = false
 							#Player.instance.find_child("BrotherText11").visible = false
 							#Player.instance.find_child("BrotherText12").visible = false
-						Player.instance.find_child("BrotherText13").visible = false
-						Player.instance.find_child("BrotherText14").visible = true
+
 							#Player.instance.find_child("BrotherText15").visible = false
 							#Player.instance.find_child("BrotherText16").visible = false
 							#Player.instance.find_child("BrotherText17").visible = false
@@ -477,6 +568,10 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText20").visible = false
 							#Player.instance.find_child("BrotherText21").visible = false
 					15:
+						Player.instance.find_child("BrotherText14").visible = false
+						Player.instance.find_child("BrotherText15").visible = true
+						
+						# To Delete
 							#for i in brotherTexts.size():
 								#var brotherText = brotherTexts[i]
 								#Player.instance.find_child(brotherText).visible = false
@@ -495,8 +590,7 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText11").visible = false
 							#Player.instance.find_child("BrotherText12").visible = false
 							#Player.instance.find_child("BrotherText13").visible = false
-						Player.instance.find_child("BrotherText14").visible = false
-						Player.instance.find_child("BrotherText15").visible = true
+
 							#Player.instance.find_child("BrotherText16").visible = false
 							#Player.instance.find_child("BrotherText17").visible = false
 							#Player.instance.find_child("BrotherText18").visible = false
@@ -504,6 +598,10 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText20").visible = false
 							#Player.instance.find_child("BrotherText21").visible = false
 					16:
+						Player.instance.find_child("BrotherText15").visible = false
+						Player.instance.find_child("BrotherText16").visible = true
+						
+						# To Delete
 							#for i in brotherTexts.size():
 								#var brotherText = brotherTexts[i]
 								#Player.instance.find_child(brotherText).visible = false
@@ -523,14 +621,17 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText12").visible = false
 							#Player.instance.find_child("BrotherText13").visible = false
 							#Player.instance.find_child("BrotherText14").visible = false
-						Player.instance.find_child("BrotherText15").visible = false
-						Player.instance.find_child("BrotherText16").visible = true
+
 							#Player.instance.find_child("BrotherText17").visible = false
 							#Player.instance.find_child("BrotherText18").visible = false
 							#Player.instance.find_child("BrotherText19").visible = false
 							#Player.instance.find_child("BrotherText20").visible = false
 							#Player.instance.find_child("BrotherText21").visible = false
 					17:
+						Player.instance.find_child("BrotherText16").visible = false
+						Player.instance.find_child("BrotherText17").visible = true
+						
+						# To Delete
 							#for i in brotherTexts.size():
 								#var brotherText = brotherTexts[i]
 								#Player.instance.find_child(brotherText).visible = false
@@ -551,13 +652,16 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText13").visible = false
 							#Player.instance.find_child("BrotherText14").visible = false
 							#Player.instance.find_child("BrotherText15").visible = false
-						Player.instance.find_child("BrotherText16").visible = false
-						Player.instance.find_child("BrotherText17").visible = true
+
 							#Player.instance.find_child("BrotherText18").visible = false
 							#Player.instance.find_child("BrotherText19").visible = false
 							#Player.instance.find_child("BrotherText20").visible = false
 							#Player.instance.find_child("BrotherText21").visible = false
 					18:
+						Player.instance.find_child("BrotherText17").visible = false
+						Player.instance.find_child("BrotherText18").visible = true
+						
+						# To Delete
 							#for i in brotherTexts.size():
 								#var brotherText = brotherTexts[i]
 								#Player.instance.find_child(brotherText).visible = false
@@ -579,12 +683,15 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText14").visible = false
 							#Player.instance.find_child("BrotherText15").visible = false
 							#Player.instance.find_child("BrotherText16").visible = false
-						Player.instance.find_child("BrotherText17").visible = false
-						Player.instance.find_child("BrotherText18").visible = true
+
 							#Player.instance.find_child("BrotherText19").visible = false
 							#Player.instance.find_child("BrotherText20").visible = false
 							#Player.instance.find_child("BrotherText21").visible = false
 					19:
+						Player.instance.find_child("BrotherText18").visible = false
+						Player.instance.find_child("BrotherText19").visible = true
+						
+						# To Delete
 							#for i in brotherTexts.size():
 								#var brotherText = brotherTexts[i]
 								#Player.instance.find_child(brotherText).visible = false
@@ -607,11 +714,14 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText15").visible = false
 							#Player.instance.find_child("BrotherText16").visible = false
 							#Player.instance.find_child("BrotherText17").visible = false
-						Player.instance.find_child("BrotherText18").visible = false
-						Player.instance.find_child("BrotherText19").visible = true
+
 							#Player.instance.find_child("BrotherText20").visible = false
 							#Player.instance.find_child("BrotherText21").visible = false
 					20:
+						Player.instance.find_child("BrotherText19").visible = false
+						Player.instance.find_child("BrotherText20").visible = true
+						
+						# To Delete
 							#for i in brotherTexts.size():
 								#var brotherText = brotherTexts[i]
 								#Player.instance.find_child(brotherText).visible = false
@@ -635,10 +745,13 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText16").visible = false
 							#Player.instance.find_child("BrotherText17").visible = false
 							#Player.instance.find_child("BrotherText18").visible = false
-						Player.instance.find_child("BrotherText19").visible = false
-						Player.instance.find_child("BrotherText20").visible = true
+
 							#Player.instance.find_child("BrotherText21").visible = false
 					21:
+						Player.instance.find_child("BrotherText20").visible = false
+						Player.instance.find_child("BrotherText21").visible = true
+						
+						# To Delete
 							#for i in brotherTexts.size():
 								#var brotherText = brotherTexts[i]
 								#Player.instance.find_child(brotherText).visible = false
@@ -663,14 +776,12 @@ func _process(delta: float) -> void:
 							#Player.instance.find_child("BrotherText17").visible = false
 							#Player.instance.find_child("BrotherText18").visible = false
 							#Player.instance.find_child("BrotherText19").visible = false
-						Player.instance.find_child("BrotherText20").visible = false
-						Player.instance.find_child("BrotherText21").visible = true
+
 					var n when n > 21:
 						Global.brotherText = false
 						Global.disableBrother.emit()
 			elif Global.brotherText == false:
-				Player.instance.find_child("BulletUI").visible = true
-				Player.instance.find_child("HealthTracker").visible = true
+				showUI()
 					
 				var brotherTexts = []
 				for i in range(22):
@@ -687,9 +798,7 @@ func _process(delta: float) -> void:
 					Global.talkedToBrother = true
 		Global.Cutscenes.ROCK:
 			if Global.rockText == true:
-				#print("rock text")
-				Player.instance.find_child("BulletUI").visible = false
-				Player.instance.find_child("HealthTracker").visible = false
+				hideUI()
 				get_tree().paused = true
 				Player.instance.position = Vector2(5868.0, 1249.0)
 				Player.instance.visible = false
@@ -708,14 +817,12 @@ func _process(delta: float) -> void:
 				Player.instance.visible = true
 				Player.instance.find_child("Camera2D").make_current()
 				Global.rockText = false
-				Player.instance.find_child("BulletUI").visible = true
-				Player.instance.find_child("HealthTracker").visible = true
+				showUI()
 				get_tree().paused = false
 				
 		Global.Cutscenes.SEWER:
 			if Global.sewerText == true:
-				Player.instance.find_child("BulletUI").visible = false
-				Player.instance.find_child("HealthTracker").visible = false
+				hideUI()
 				
 				var sewerTexts = []
 				for i in range(7):
@@ -728,7 +835,7 @@ func _process(delta: float) -> void:
 					Player.instance.find_child(sewerText).visible = false
 				get_tree().paused = true
 				
-				match Global.sewerTextInt:	
+				match Global.sewerTextInt:
 					1:
 						for i in sewerTexts.size():
 							var sewerText = sewerTexts[i]
@@ -776,8 +883,7 @@ func _process(delta: float) -> void:
 						Global.sewerText = false
 		
 			elif Global.sewerText == false:
-				Player.instance.find_child("BulletUI").visible = true
-				Player.instance.find_child("HealthTracker").visible = true
+				showUI()
 					
 				#var sewerTexts = []
 				#for i in range(22):
