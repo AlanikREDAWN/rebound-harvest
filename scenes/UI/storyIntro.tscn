@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://mhcwcntf5t"]
 
-[ext_resource type="Script" uid="uid://dyqldd24loamq" path="res://scripts/story_intro.gd" id="1_82riu"]
+[ext_resource type="Script" uid="uid://dyqldd24loamq" path="res://scripts/UI/story_intro.gd" id="1_82riu"]
 [ext_resource type="FontFile" uid="uid://dm2artcnu7wwv" path="res://assets/fonts/ElegantTypewriter-YzBOy.ttf" id="1_ccoqa"]
 [ext_resource type="Texture2D" uid="uid://b0pxefownkvqb" path="res://assets/sprites/player/Simple Detective.png" id="2_1usdc"]
 [ext_resource type="Texture2D" uid="uid://dx0armth6k760" path="res://assets/sprites/Story Elements/Golden Pipe.png" id="3_of718"]

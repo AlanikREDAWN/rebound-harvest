@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://sksv2yxhofrn"]
 
-[ext_resource type="Script" uid="uid://y4f3trcfd4hy" path="res://scripts/base_enemy.gd" id="1_6gyu6"]
-[ext_resource type="Script" uid="uid://d3ftjo7gectpn" path="res://scripts/health.gd" id="2_whldq"]
-[ext_resource type="Texture2D" uid="uid://cqamct23udeqe" path="res://assets/sprites/enemies/Angel.png" id="3_6gyu6"]
-[ext_resource type="AudioStream" uid="uid://dk0ietipgqvhw" path="res://assets/Sounds/Enemy Death.wav" id="4_whldq"]
+[ext_resource type="Script" uid="uid://y4f3trcfd4hy" path="res://scripts/enemies/base_enemy.gd" id="1_58874"]
+[ext_resource type="AudioStream" uid="uid://dk0ietipgqvhw" path="res://assets/Sounds/Enemy Death.wav" id="2_ifdfd"]
+[ext_resource type="Script" uid="uid://d3ftjo7gectpn" path="res://scripts/health.gd" id="3_vyy8u"]
+[ext_resource type="Texture2D" uid="uid://cqamct23udeqe" path="res://assets/sprites/enemies/Angel.png" id="4_nce1w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_whldq"]
-atlas = ExtResource("3_6gyu6")
+atlas = ExtResource("4_nce1w")
 region = Rect2(0, 0, 32, 96)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oark8"]
@@ -26,7 +26,7 @@ height = 22.504774
 
 [node name="angel" type="CharacterBody2D" unique_id=2118979394]
 process_mode = 1
-script = ExtResource("1_6gyu6")
+script = ExtResource("1_58874")
 metadata/type = "angel"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1572576942]
@@ -36,11 +36,11 @@ collision_layer = 4
 metadata/_tc_offline_added = true
 
 [node name="EnemyDeathNoise" type="AudioStreamPlayer" parent="CharacterBody2D" unique_id=2043822133]
-stream = ExtResource("4_whldq")
+stream = ExtResource("2_ifdfd")
 
 [node name="Health" type="Node" parent="CharacterBody2D" unique_id=1820158022]
 process_mode = 1
-script = ExtResource("2_whldq")
+script = ExtResource("3_vyy8u")
 max_health = 2
 metadata/_custom_type_script = "uid://d3ftjo7gectpn"
 

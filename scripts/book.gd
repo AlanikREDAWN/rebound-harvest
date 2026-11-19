@@ -26,37 +26,35 @@ func go_to_page(page: int):
 		
 	if page == 0:
 		if current_page == 1:
-			play("closed-front")
+			play("close_from_first")
 		elif current_page == page_count:
 			play("closed-front")
 		else:
-			play("closed-front")
+			play("close_from_middle")
 	elif page == page_count:
 		if current_page == page_count - 1:
-			play("book-close")
+			play("close_from_last")
 		elif current_page == 0:
-			play("closed-back")
+			play("closed_back")
 	elif page == 1:
 		if current_page == 0:
-			play("book-open")
+			play("open_to_first")
 		elif current_page == 2:
-			play("book-close")
+			play("previous_to_first")
 	elif page == page_count - 1:
 		if current_page == page_count:
-			play("book-open")
+			play("open_to_last")
 		if current_page == page_count - 2:
-			play("book-close")
+			play("next_to_last")
 	elif page == 2 and current_page == 1:
-		play("book-next-page")
+		play("next_from_first")
 	elif page == page_count - 2 && current_page == page_count - 1:
-		play("book-prev-page")
-		print("prev page")
-		
+		play("previous_from_last")
 	else:
 		if page > current_page:
-			play("book-next-page")
+			play("next_page")
 		elif page < current_page:
-			play("book-prev-page")
+			play("previous_page")
 	
 	current_page = page
 

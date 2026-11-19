@@ -6,4 +6,5 @@ func _on_quit_pressed() -> void:
 
 
 func _on_start_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/storyIntro.tscn")
+	#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	get_tree().change_scene_to_file("res://scenes/UI/storyIntro.tscn")

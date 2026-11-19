@@ -56,5 +56,5 @@ func _process(delta: float) -> void:
 
 func _death():
 	#Player.queue_free()
-	get_tree().change_scene_to_file("res://scenes/death.tscn")
+	get_tree().change_scene_to_file("res://scenes/UI/death.tscn")
 	Player.instance.queue_free()

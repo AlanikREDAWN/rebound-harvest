@@ -1,37 +1,32 @@
-[gd_scene format=3 uid="uid://3eixysh22ksl"]
+[gd_scene format=3 uid="uid://c3u8g36o22ear"]
 
-[ext_resource type="Script" uid="uid://y4f3trcfd4hy" path="res://scripts/base_enemy.gd" id="1_3is44"]
-[ext_resource type="AudioStream" uid="uid://dk0ietipgqvhw" path="res://assets/Sounds/Enemy Death.wav" id="2_2svyb"]
-[ext_resource type="Script" uid="uid://d3ftjo7gectpn" path="res://scripts/health.gd" id="3_pdvgh"]
-[ext_resource type="Texture2D" uid="uid://bshvvpqx4emcc" path="res://assets/sprites/enemies/Bulkatron.png" id="4_3is44"]
+[ext_resource type="Texture2D" uid="uid://cviv5u177lwhv" path="res://assets/sprites/enemies/Spider.png" id="1_n1jr3"]
+[ext_resource type="Script" uid="uid://y4f3trcfd4hy" path="res://scripts/enemies/base_enemy.gd" id="1_sw3va"]
+[ext_resource type="Script" uid="uid://d3ftjo7gectpn" path="res://scripts/health.gd" id="2_2kb2m"]
+[ext_resource type="AudioStream" uid="uid://dk0ietipgqvhw" path="res://assets/Sounds/Enemy Death.wav" id="4_kegi0"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2svyb"]
-atlas = ExtResource("4_3is44")
-region = Rect2(0, 0, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_sw3va"]
+atlas = ExtResource("1_n1jr3")
+region = Rect2(0, 0, 1216, 1216)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oark8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2svyb")
+"texture": SubResource("AtlasTexture_sw3va")
 }],
 "loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yrxyh"]
-radius = 5.1773453
-height = 13.663613
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l7nqg"]
-radius = 5.1773458
-height = 13.663614
+[sub_resource type="CircleShape2D" id="CircleShape2D_oark8"]
+radius = 2.619681
 
 [node name="baseEnemy" type="CharacterBody2D" unique_id=2118979394]
 process_mode = 1
-script = ExtResource("1_3is44")
-metadata/type = "rancor"
+script = ExtResource("1_sw3va")
+metadata/type = "spider"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1572576942]
 
@@ -40,34 +35,32 @@ collision_layer = 4
 metadata/_tc_offline_added = true
 
 [node name="EnemyDeathNoise" type="AudioStreamPlayer" parent="CharacterBody2D" unique_id=2119925788]
-stream = ExtResource("2_2svyb")
+stream = ExtResource("4_kegi0")
 
 [node name="Health" type="Node" parent="CharacterBody2D" unique_id=1820158022]
 process_mode = 1
-script = ExtResource("3_pdvgh")
-max_health = 5
+script = ExtResource("2_2kb2m")
+max_health = 0
 metadata/_custom_type_script = "uid://d3ftjo7gectpn"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=636771397]
-position = Vector2(0, -23)
-scale = Vector2(0.3515625, 0.35156247)
+position = Vector2(-1.9073486e-06, -9.000001)
+scale = Vector2(0.016447376, 0.0154194)
 sprite_frames = SubResource("SpriteFrames_oark8")
 metadata/_tc_offline_added = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=81483564]
-position = Vector2(2, -14)
-rotation = 1.5707964
+position = Vector2(1, -6)
 scale = Vector2(2.7040884, 2.488361)
-shape = SubResource("CapsuleShape2D_yrxyh")
+shape = SubResource("CircleShape2D_oark8")
 metadata/_tc_offline_added = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1451923046]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=530681280]
-position = Vector2(2.0000005, -14.000001)
-rotation = 1.5707964
+position = Vector2(1, -6)
 scale = Vector2(2.7040884, 2.488361)
-shape = SubResource("CapsuleShape2D_l7nqg")
+shape = SubResource("CircleShape2D_oark8")
 metadata/_tc_offline_added = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

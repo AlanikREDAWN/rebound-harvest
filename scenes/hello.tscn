@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://bio07lwx7k5wt"]
 
 [ext_resource type="Script" uid="uid://bqdv2k4dttpye" path="res://scripts/game.gd" id="1_nubo1"]
-[ext_resource type="PackedScene" uid="uid://sksv2yxhofrn" path="res://scenes/angel.tscn" id="2_svssl"]
-[ext_resource type="PackedScene" uid="uid://c3u8g36o22ear" path="res://scenes/base_enemy.tscn" id="3_pbtvg"]
+[ext_resource type="PackedScene" uid="uid://sksv2yxhofrn" path="res://scenes/enemies/angel.tscn" id="2_svssl"]
+[ext_resource type="PackedScene" uid="uid://c3u8g36o22ear" path="res://scenes/enemies/base_enemy.tscn" id="3_pbtvg"]
 [ext_resource type="Texture2D" uid="uid://b16get58s0sny" path="res://assets/sprites/map_bg/Building.png" id="5_svssl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pbtvg"]

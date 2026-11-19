@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b1a2mgyieyiew"]
 
 [ext_resource type="Texture2D" uid="uid://byo2h6ts3pvi6" path="res://assets/sprites/map_bg/Better Sky.png" id="1_bxp71"]
-[ext_resource type="Script" uid="uid://bwtxleplqksa5" path="res://scripts/grannify.gd" id="1_o57u6"]
+[ext_resource type="Script" uid="uid://bwtxleplqksa5" path="res://scripts/UI/grannify.gd" id="1_o57u6"]
 [ext_resource type="Texture2D" uid="uid://b16get58s0sny" path="res://assets/sprites/map_bg/Building.png" id="2_gunw1"]
 [ext_resource type="Texture2D" uid="uid://dmhcqnyy6dfub" path="res://assets/sprites/map_bg/THE FINAL ROAD.png" id="3_hkb1p"]
 [ext_resource type="Texture2D" uid="uid://c203n0g2rw464" path="res://assets/sprites/Story Elements/Granny.png" id="4_b7c1g"]

@@ -87,8 +87,10 @@ func _process(delta: float) -> void:
 	Global.player_position = global_position
 	
 func updateGunState() -> void:
-	var viewX = get_viewport().get_window().size.x
-	var viewY = get_viewport().get_window().size.y
+	var viewX = get_window().content_scale_size.x
+	var viewY = get_window().content_scale_size.y
+	#var viewX = get_viewport().get_window().size.x
+	#var viewY = get_viewport().get_window().size.y
 	dir = (get_viewport().get_mouse_position() - Vector2(viewX/2,viewY/2)).normalized()
 	var dirToAngle = dir.angle()
 	

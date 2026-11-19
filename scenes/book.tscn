@@ -353,8 +353,10 @@ animations = [{
 position = Vector2(500, 300)
 scale = Vector2(30, 30)
 sprite_frames = SubResource("SpriteFrames_ed86q")
-animation = &"previous_to_first"
+animation = &"next_from_first"
 autoplay = "closed_front"
+frame = 2
+frame_progress = 1.0
 script = ExtResource("5_01hes")
 
 [node name="Control" type="Control" parent="." unique_id=2001051614]

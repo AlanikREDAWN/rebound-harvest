@@ -4,10 +4,11 @@ extends Node2D
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-var player_instance = preload("res://scenes/player.tscn")
+var player_instance = preload("res://scenes/characters/player.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
 	simple_detective.visible = false # hide the detective dupe - used for cutscene 
 	
 	Global.brotherEntered.connect(_brotherEntered)
@@ -56,7 +57,7 @@ func _process(delta: float) -> void:
 				
 				match Global.spawnTextInt:
 					1:
-						Player.instance.find_child("spawnText1").visible = true
+						Player.instance.find_child("SpawnText1").visible = true
 						
 						# To Delete
 						#Player.instance.find_child("SpawnText1").visible = true
@@ -935,4 +936,4 @@ func _on_sewer_area_2d_body_entered(body: Node2D) -> void:
 func _on_end_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		Player.instance.queue_free()
-		get_tree().change_scene_to_file("res://scenes/Grannify.tscn")
+		get_tree().change_scene_to_file("res://scenes/UI/Grannify.tscn")

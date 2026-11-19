@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bqekbtihtykxo"]
 
 [ext_resource type="Texture2D" uid="uid://b51cutsrgyspo" path="res://assets/sprites/projectiles/Detective Bullet.png" id="1_dj8aq"]
-[ext_resource type="Script" uid="uid://chwobt3ocnwws" path="res://scripts/bullet_label.gd" id="2_ro3t7"]
-[ext_resource type="Script" uid="uid://dupilwagr63ls" path="res://scripts/refresh_label.gd" id="3_5en4g"]
+[ext_resource type="Script" uid="uid://chwobt3ocnwws" path="res://scripts/UI/bullet_label.gd" id="2_ro3t7"]
+[ext_resource type="Script" uid="uid://dupilwagr63ls" path="res://scripts/UI/refresh_label.gd" id="3_5en4g"]
 
 [sub_resource type="SystemFont" id="SystemFont_j5ip0"]
 subpixel_positioning = 0

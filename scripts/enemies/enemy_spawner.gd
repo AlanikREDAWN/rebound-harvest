@@ -5,10 +5,10 @@ extends Node2D
 @export var id : String
 @onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
 
-const REF_SPIDER: PackedScene = preload("res://scenes/base_enemy.tscn")
-const REF_ANGEL: PackedScene = preload("res://scenes/angel.tscn")
-const REF_SPRING: PackedScene = preload("res://scenes/spring.tscn")
-const REF_RANCOR: PackedScene = preload("res://scenes/rancor.tscn")
+const REF_SPIDER: PackedScene = preload("res://scenes/enemies/base_enemy.tscn")
+const REF_ANGEL: PackedScene = preload("res://scenes/enemies/angel.tscn")
+const REF_SPRING: PackedScene = preload("res://scenes/enemies/spring.tscn")
+const REF_RANCOR: PackedScene = preload("res://scenes/enemies/rancor.tscn")
 
 const ENEMY_NO_GO_ZONE = 75.0
 
